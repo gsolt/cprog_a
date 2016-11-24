@@ -1091,11 +1091,11 @@ sT[0].sTI[56].nType = TYP_TMOK;
 sT[0].sTI[57].nType = TYP_TMOK;
 
 	sT[0].sMOT[57].nIEC_SP				= 1703;		/* Egybites értékek IEC kezdõcíme*/
-	sT[0].sMOT[57].nIEC_SP_NUM			= 16;		/* Egybites értékek száma*/
+	/* sT[0].sMOT[57].nIEC_SP_NUM			= 16;		Egybites értékek száma*/
 	sT[0].sMOT[57].nIEC_DP				= 286;		/* Kétbites értékek IEC kezdõcíme*/
-	sT[0].sMOT[57].nIEC_DP_NUM			= 1;   		/* Két bites értékek száma*/
-	sT[0].sMOT[57].nIEC_NM				= 303;		/* Mérések IEC kezdõcíme */
-	sT[0].sMOT[57].nNMNum					= 2;		/* Analóg mérések száma*/
+	/* sT[0].sMOT[57].nIEC_DP_NUM			= 1;   		 Két bites értékek száma*/
+	sT[0].sMOT[57].nIEC_NM				= 996;		/* Mérések IEC kezdõcíme */
+	/* sT[0].sMOT[57].nNMNum					= 3;		 Analóg mérések száma*/
 
 /* Csutortok, pentek ---------------------------------------------------------------------------------------------------------*/
 /* 15-00 TMOK -----------------------------------------------------------*/
