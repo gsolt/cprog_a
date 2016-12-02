@@ -444,7 +444,7 @@ nSiteIdCheck[12] = 320;
 /* 250 Komarom, Hansaprint	RADIO5_5		IG			*/ MOSCAD_add_new_site(301,RADIO5_5);		
 /* 251 85-00,85-83							IG			*/ MOSCAD_add_new_site(302,RADIO5_1);
 /* 252 12-14								MOS			*/ MOSCAD_add_new_site(303,RADIO7_1);
-/* 253 30-23								SZVAR		*/ MOSCAD_add_new_site(304,RADIO9_1);
+/* 253 30-23								SZVAR		*/ MOSCAD_add_new_site(304,RADIO1_1);
 /* 254 11-10								MOS			*/ MOSCAD_add_new_site(305,RADIO7_1);
 /* 255 Sárvár, HUKE							IK			*/ MOSCAD_add_new_site(5355,RADIO4_1);
 /* 256 Tata, Meszes							IG			*/ MOSCAD_add_new_site(315,RADIO5_2);
