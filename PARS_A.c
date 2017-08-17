@@ -325,7 +325,7 @@ ST[0].nSiteList[173]		=200; 	ST[0].nLinkList[173]		=RADIO2_7; 		/*91-16 TMOK				
 ST[0].nSiteList[174]		=201; 	ST[0].nLinkList[174]		=RADIO2_7; 		/*91-17 TMOK					ZALA*/
 ST[0].nSiteList[175]		=202; 	ST[0].nLinkList[175]		=RADIO2_7; 		/*91-18 TMOK					ZALA*/
 ST[0].nSiteList[176]		=207; 	ST[0].nLinkList[176]		=RADIO2_7; 		/*91-60 TMOK					ZALA*/
-ST[0].nSiteList[177]		=208; 	ST[0].nLinkList[177]		=RADIO2_7; 		/*91-82 TMOK					ZALA*/
+ST[0].nSiteList[177]		=208; 	ST[0].nLinkList[177]		=RADIO2_6; 		/*91-82 TMOK					ZALA*/
 ST[0].nSiteList[178]		=210; 	ST[0].nLinkList[178]		=RADIO8_5; 		/*92-29 TMOK					ZALA*/
 ST[0].nSiteList[179]		=248; 	ST[0].nLinkList[179]		=RADIO1_8; 		/*31-18 TMOK					SZVAR*/
 ST[0].nSiteList[180]		=229; 	ST[0].nLinkList[180]		=RADIO5_1; 		/*86-10 TMOK					IG*/
