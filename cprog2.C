@@ -34,6 +34,8 @@
 * [C] Copyright Zsolt Gergely,  2003.  All Rights Reserved                 *
 *                                                                            *
 * REV    DATE     PROGRAMMER         REVISION HISTORY                        *
+Ver2.0	2017.08.  Gergely Zsolt		Ki lett egészítvw 2 függvénnyel az újfajta 
+									reteszkezelés miatt: fnReadDPData, fnWriteDPData	 		
 *****************************************************************************/
 
 #include "CAPPLIC.H"
@@ -57,8 +59,12 @@ int fnReadSPData(int nIEC_Offset);
 void fnDCTblIndx(int nIECOffset, int *nDCTblIndx, int *nOffset, short **p_col_DCAct);
 void fnSCTblIndx(int nIECOffset, int *nSCTblIndx, int *nOffset, short **p_col_SCAct);
 void fnWriteNMStatus(int nIEC_Offset, int nData);
-void fnWriteDPStatus(int nIEC_Offset, int nData);
 void fnWriteSPStatus(int nIEC_Offset, int nData);
+void fnWriteDPStatus(int nIEC_Offset, int nData);
+
+void fnWriteDPData(int nIEC_Offset, int nData, int nMS1, int nMS2, int nMin, int nCTAct);
+
+
 /****************************************************************************/
 /* Beir egy adatot a SP adatok koze											*/
 /*																			*/
@@ -74,7 +80,7 @@ char			message[300];
 
 
 
-CB_TABLE_INFO   table_SPAct;	
+CB_TABLE_INFO   table_SPAct;
 
 int				nSPTblIndx;
 int				nIndx;
@@ -143,7 +149,7 @@ CB_TABLE_INFO   table_SPAct;
 
 
 int				nData;
-char			message[300];
+char			message[100];
 int				nSPTblIndx;
 int				nIndx;
 
@@ -156,7 +162,7 @@ int				nIndx;
    					{
 					       MOSCAD_sprintf(message,"No valid information in table: %d",nSPTblIndx);
 					       MOSCAD_error(message );
-					       return 0;
+					       return;
    					}
    					
    					
@@ -178,7 +184,7 @@ void fnWriteNM( int nIECOffset,unsigned int nData)
 				
 
 int		nNMTblIndx;
-char	message[300];
+char	message[200];
 int		nIndx;
 
 
@@ -261,7 +267,6 @@ int				nIndx;
 					}
 					
 					
-					
 
 } /* end fnWriteSPStatus()*/
 /****************************************************************************/
@@ -314,8 +319,7 @@ int				nOffset;
 					else if (nData == NOT_TOPICAL)
 					{
 						p_col_DPStatus[nIndx]= NOT_TOPICAL;
-					}		
-					
+					}										
 
 } /* end fnWriteDPStatus()*/
 /****************************************************************************/
@@ -385,6 +389,7 @@ char			message[300];
 
 CB_TABLE_INFO   table_parInt;
 short          *p_col_parInt;
+
 
 
 
@@ -666,8 +671,8 @@ void fnDPTblIndx(int nIECOffset, int *nDPTblIndx, int *nOffset)
 
 CB_TABLE_INFO   table_parInt;
 short          *p_col_parInt;
-
-
+	
+	
 char			message[300];
 
 	/* Egesz parameterek */
@@ -700,7 +705,7 @@ char			message[300];
 		*nDPTblIndx = p_col_parInt[55];	/* Itt van az DP2 tábla sorszáma */
 		*nOffset =  500;
 	}/*end if DP3 */
-	else if (nIECOffset>=750 && nIECOffset<1000)
+	else if (nIECOffset>= 750 && nIECOffset<1000)
 	{								
 		/* Double point 4. */
 		*nDPTblIndx = p_col_parInt[67];	/* Itt van az DP2 tábla sorszáma */
@@ -708,18 +713,18 @@ char			message[300];
 	}/*end if DP4 */
 
 } /* end fnDPTblIndx()*/
-/********************************************************************************/
-/* Elloallitja az adott IEC DC cimhez tartozó MOSCAD tábla indexét, és offsetet */
-/********************************************************************************/
+/**************************************************************************************************************/
+/* Elloallitja az adott IEC DC cimhez tartozó MOSCAD tábla indexét, és offsetet és a parancs oszlop pointerét */
+/**************************************************************************************************************/
 void fnDCTblIndx(int nIECOffset, int *nDCTblIndx, int *nOffset, short **p_col_DCAct)
 {
 
 CB_TABLE_INFO   table_parInt;
 CB_TABLE_INFO   table_DC;
 short          *p_col_parInt;
+	
 
-
-char			message[300];
+char			message[100];
 
 	/* Egesz parameterek */
    	if (MOSCAD_get_table_info (2,&table_parInt)!=0 )
@@ -778,7 +783,7 @@ void fnSCTblIndx(int nIECOffset, int *nSCTblIndx, int *nOffset, short **p_col_SC
 
 CB_TABLE_INFO   table_parInt;
 short          *p_col_parInt;
-	
+
 
 char			message[300];
 
@@ -835,3 +840,164 @@ CB_TABLE_INFO   table_SC;
 } /* end fnSCTblIndx()*/
 
 
+/****************************************************************************/
+/* Beir egy adatot a DP adatok koze											*/
+/*	nData: 0,1,2,3																		*/
+/****************************************************************************/
+void fnWriteDPData(int nIEC_Offset, int nData, int nMS1, int nMS2, int nMin, int nCTAct)
+{
+	
+
+short          *p_col_DP_CTAct;
+short          *p_col_DP_Valid;
+
+short			*p_col_DPH;			/* DPH -> CLOSE  TILTVA */
+short			*p_col_DPL;			/* DPL -> OPEN   ENGEDÉLYEZVE */
+
+CB_TABLE_INFO   table_DPAct;	
+
+
+char			message[200];
+int				nDPTblIndx;
+int				nOffset;
+
+
+						
+					/*Elõállítja a tábla indexet, és offsetet */	
+					fnDPTblIndx(nIEC_Offset, &nDPTblIndx, &nOffset);						
+						
+					if (MOSCAD_get_table_info (nDPTblIndx,&table_DPAct)!=0 )
+   					{
+					       MOSCAD_sprintf(message,"No valid information in table: %d",nDPTblIndx);
+					       MOSCAD_error(message );
+					       return;
+   					}
+   					
+					p_col_DPH     = (short *)(table_DPAct.ColDataPtr[0]);			/* DPH -> CLOSE  TILTVA */
+					p_col_DPL     = (short *)(table_DPAct.ColDataPtr[1]);			/* DPL -> OPEN   ENGEDÉLYEZVE */
+				   	p_col_DP_CTAct  = (short *)(table_DPAct.ColDataPtr[5]); 
+				   	p_col_DP_Valid  = (short *)(table_DPAct.ColDataPtr[6]); 
+				   	
+				   	
+				   	p_col_DPL[nIEC_Offset-nOffset] = (nData >> 0)   & 1;
+			 		p_col_DPH[nIEC_Offset-nOffset] = (nData >> 1) & 1;
+	 				p_col_DP_CTAct[nIEC_Offset-nOffset]= nCTAct;
+	 				p_col_DP_Valid[nIEC_Offset-nOffset]= 1;
+	 				
+
+
+	
+				
+
+
+} /* end fnWriteDPData()*/
+
+/****************************************************************************/
+/* Kiolvas egy adatot a DP adatok közül											*/
+/* A visszatérõ érték: 0,1,2,3														*/
+/****************************************************************************/
+int fnReadDPData(int nIEC_Offset, int nMS1, int nMS2, int nMin, int nCTAct)
+{
+	
+
+short          *p_col_DP_CTAct;
+short          *p_col_DP_Valid;
+
+short			*p_col_DPH;			/* DPH -> CLOSE  TILTVA */
+short			*p_col_DPL;			/* DPL -> OPEN   ENGEDÉLYEZVE */
+
+CB_TABLE_INFO   table_DPAct;	
+
+
+char			message[200];
+int				nDPTblIndx;
+int				nOffset;
+
+
+						
+					/*Elõállítja a tábla indexet, és offsetet */	
+					fnDPTblIndx(nIEC_Offset, &nDPTblIndx, &nOffset);						
+						
+					if (MOSCAD_get_table_info (nDPTblIndx,&table_DPAct)!=0 )
+   					{
+					       MOSCAD_sprintf(message,"No valid information in table: %d",nDPTblIndx);
+					       MOSCAD_error(message );
+					       return;
+   					}
+   					
+					p_col_DPH     = (short *)(table_DPAct.ColDataPtr[0]);			/* DPH -> CLOSE  TILTVA */
+					p_col_DPL     = (short *)(table_DPAct.ColDataPtr[1]);			/* DPL -> OPEN   ENGEDÉLYEZVE */
+				   	p_col_DP_CTAct  = (short *)(table_DPAct.ColDataPtr[5]); 
+				   	p_col_DP_Valid  = (short *)(table_DPAct.ColDataPtr[6]); 
+				   	
+				   	
+	return( 2 * p_col_DPH[nIEC_Offset-nOffset] + p_col_DPL[nIEC_Offset-nOffset]);		/* Ha 2, akkor tiltva van, ha 1 akkor engedélyezve */
+
+				
+
+
+} /* end fnReadDPData()*/
+
+/********************************************************************************/
+/* Elloallitja az adott IEC SC cimhez tartozó elõzõ érték MOSCAD tábla indexét, és offsetet */
+/********************************************************************************/
+void fnPrSCTblIndx(int nIECOffset, int *nSCTblIndx, int *nOffset, short **p_col_SCAct)
+{
+
+CB_TABLE_INFO   table_parInt;
+short          *p_col_parInt;
+
+
+char			message[300];
+
+CB_TABLE_INFO   table_SC;
+
+	/* Egesz parameterek */
+   	if (MOSCAD_get_table_info (2,&table_parInt)!=0 )
+   		{
+        MOSCAD_sprintf(message,"No valid information in table: %d",2);
+        MOSCAD_error(message );
+        return;
+   		}
+	p_col_parInt = (short *)(table_parInt.ColDataPtr[0]);	
+
+
+
+	/* A címtartománytól függ az SC tábla */
+	if (nIECOffset>=0 && nIECOffset<250)
+	{								
+		/* Single command 1. */
+		*nSCTblIndx = p_col_parInt[31];	/* Itt van az SC1 tábla sorszáma */
+		*nOffset = 0;
+	}/*end if SC1 */
+	else if (nIECOffset>=250 && nIECOffset<500)
+	{								
+		/* Single command  2. */
+		*nSCTblIndx = p_col_parInt[46];	/* Itt van az SC2 tábla sorszáma */
+		*nOffset =  250;
+	}/*end if SC2 */
+	else if (nIECOffset>=500 && nIECOffset<750)
+	{								
+		/* Single command  3. */
+		*nSCTblIndx = p_col_parInt[58];	/* Itt van az SC3 tábla sorszáma */
+		*nOffset =  500;
+	}/*end if SC3 */
+
+	else if (nIECOffset>=750 && nIECOffset<1000)
+	{								
+		/* Single command  4. */
+		*nSCTblIndx = p_col_parInt[69];	/* Itt van az SC4 tábla sorszáma */
+		*nOffset =  750;
+	}/*end if SC4 */
+
+
+	if (MOSCAD_get_table_info (*nSCTblIndx,&table_SC)!=0 )
+   		{
+        MOSCAD_sprintf(message,"No valid information in table: %d",*nSCTblIndx);
+        MOSCAD_error(message );
+        return;
+   		}
+	*p_col_SCAct = (short *)(table_SC.ColDataPtr[1]);
+
+
+} /* end fnPrSCTblIndx()*/
