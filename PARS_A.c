@@ -455,7 +455,9 @@ nSiteIdCheck[12] = 320;
 /* 260 Székesfehérvár, Dunainjection		SZVAR		*/ MOSCAD_add_new_site(319,RADIO9_1);
 /* 261 43-03								IK			*/ MOSCAD_add_new_site(5359,RADIO4_1);
 /* 262 70-45								IK			*/ MOSCAD_add_new_site(320,RADIO4_1);
-/* 263 Szombathely, Depónia								*/ MOSCAD_add_new_site(7191,RADIO6_6);  /* Újfajta retesz kezelés miatt */
+/* 263 Front end C										*/ MOSCAD_add_new_site(5000,RSLINK3);  /* Újfajta retesz kezelés miatt */
+/* 264 Front end E										*/ MOSCAD_add_new_site(7000,RSLINK3);  /* Újfajta retesz kezelés miatt */
+/* 265 Front end G										*/ MOSCAD_add_new_site(9000,RSLINK3);  /* Újfajta retesz kezelés miatt */
  	
 
 
