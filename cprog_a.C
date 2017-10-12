@@ -3939,7 +3939,7 @@ elküldi a szintén paraméterként megadott RTU-knak (szintén indexel megadva)
 - Az élesítve parancs értéke 1, a bénítva parancs értéke 2 
 - A függvényt az rx() függvény végén célszerû meghívni
 - cprog2.c ki lett egészítve 2 db. függvénnyel ( fnReadDPData, fnWriteDPData )
-- Ha az RTU másik front endben van, akkor a távirat 3 szó hosszúságú, a 3. szó az állásjelzés offsete
+- A távirat 3 szó hosszúságú, a 3. szó az állásjelzés offsete
 
 																				*/
 /****************************************************************************/
@@ -3957,7 +3957,7 @@ unsigned int		ReteszesTMOK_RTUNum[RETESZ_TMOK_NUM];				/* Adott reteszes TMOK-kh
 unsigned int		ReteszAllapotokKezdoCim;							/* Retesz állapotok kezdõcíme az IEC táblában */
 unsigned int		ReteszParancsokKezdoCim;							/* Retesz élesítés/bénítás parancsok kezdõcíme az IEC táblában */
 unsigned int		TMOKAllasjelzesOffsetek[RETESZ_TMOK_NUM];			/* Reteszes TMOK-k állásjelzéseinek az offsete */
-unsigned int		TMOK_ID[RETESZ_TMOK_NUM];							/* Reteszes TMOK-k azonosítója a táviratban = DP offset */
+unsigned int		TMOK_ID[RETESZ_TMOK_NUM];							/* Reteszes TMOK-k azonosítója a kimenõ táviratban = DP offset */
 
 
 unsigned int		ReteszAllapotok[RETESZ_TMOK_NUM];
