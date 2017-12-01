@@ -3983,7 +3983,7 @@ short				*p_col_DCAct;
 ReteszAllapotokKezdoCim = 870;  /* DP4, 120 */																		/**/
 ReteszParancsokKezdoCim = 950;	/* DC4, 200 */																		/**/
 																													/**/
-ReteszesTMOKNum = 1;					/* Ennyi reteszfeltételes TMOK van az adott front-endben*/					/**/	
+ReteszesTMOKNum = 2;					/* Ennyi reteszfeltételes TMOK van az adott front-endben*/					/**/	
 																													/**/
 /* 0. TMOK: 40-93 RTU: Front end E -> Szombathely, Depónia -----------------------*/								/**/
 TMOKAllasjelzesOffsetek[0] = 268; 		/* Az állásjelzés offsete a DP adatbázisban */								/**/
@@ -3991,6 +3991,13 @@ TMOK_ID[0] =1250;						/* TMOK azonosítója a táviratban = DP offset */								/*
 ReteszesRTUIndex[0][0] = 264;			/* E front end */															/**/
 ReteszesTMOK_RTUNum[0] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
 																													/**/
+/* 1. TMOK: 64-26 RTU: Front end E -> Ostffyasszonyfa biogáz -----------------------*/								/**/
+TMOKAllasjelzesOffsetek[1] = 296; 		/* Az állásjelzés offsete a DP adatbázisban */								/**/
+TMOK_ID[1] =1253;						/* TMOK azonosítója a táviratban = DP offset */								/**/															
+ReteszesRTUIndex[1][0] = 264;			/* E front end */															/**/
+ReteszesTMOK_RTUNum[1] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
+																													
+																													
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
 
@@ -4068,7 +4075,7 @@ for (i=0;i<ReteszesTMOKNum ;i++)
 		{
 
    		   	nTxBuf[0] = 100; /* Ugyanaz, mintha TMOK lenne */				
-   		   	nTxBuf[1] = TMOKAllasjelzesek[i] << 14; /* Ez a formátum jön a TMOK-ból*/    	
+   		   	nTxBuf[1] = TMOKAllasjelzesek[i]; /*  << 14;  Ez a formátum jön a TMOK-ból*/    	
    		   	nTxBuf[2] = TMOK_ID[i];    	
    		   		
    		   	
@@ -4121,6 +4128,7 @@ PrReteszAllapotok[i]=ReteszAllapotok[i];
 
 	
 } /* end fnRetesz ********************************************************************************************************************************/
+
 
 
 /****************************************************************************/
@@ -4197,7 +4205,7 @@ if (	nDPStart > 0)
 	for (nI=0; nI < 1 && nI<2; nI++)
 	{	
 		
-				nVal = (nData << nI*2) & 0x8000;
+				nVal = (nData << nI*2) & 0x0002;
  										
  				 				
  				
@@ -4211,7 +4219,7 @@ if (	nDPStart > 0)
 					}
 	
  		
-				nVal = (nData << (nI*2+1)) & 0x8000;
+				nVal = (nData << (nI*2+1)) & 0x0002;
 				
 				if (nVal > 0)
 					{
@@ -4233,6 +4241,55 @@ if (	nDPStart > 0)
 
 } /* FRONTEND data*/
 /*-----------------------------------------------------------------------------------------------*/
+
+
+/****************************************************************************/
+/* DP állapot lekérdezésre adott válasz 
+Az RTU indítja a lekérdezést, amikor újraindul, hogy kezdeti értéket kapjanak 
+az állásjelzések
+[0]: 100
+[1]: DP offsete											*/
+/****************************************************************************/
+void fnDP_LEK( unsigned char *rx_buf, int nSite_ID)
+{
+
+	
+	unsigned short          *p_col_RxBuf;
+	unsigned short			nDP;
+	int						nOffset;
+	unsigned short		nTxBuf[80];	
+	
+		p_col_RxBuf = (short *)(rx_buf);	
+
+		nOffset = p_col_RxBuf[1];
+
+        MOSCAD_sprintf(message,"DP lekérdezés: %d %d %d",p_col_RxBuf[0],p_col_RxBuf[1],p_col_RxBuf[2]);
+        MOSCAD_error(message );
+        
+        
+ if (nOffset <1500)
+ {
+	nDP=fnReadDPData(nOffset, 0, 0, 0, 0);
+	
+   	nTxBuf[0] = 100; /* Ugyanaz, mintha TMOK lenne */				
+   	nTxBuf[1] = nDP; /*  << 14;  Ez a formátum jön a TMOK-ból*/ 
+   	nTxBuf[2] = p_col_RxBuf[1];    	
+   	
+   				/* Tavirat elkuldese */
+			
+	 		  	if (MOSCAD_TxFrm(nSite_ID, nTxBuf, TX_LENGTH*2) !=0 )
+ 			  	{
+					MOSCAD_sprintf(message,"Could not send parancs ,index: %d",nSite_ID);
+   				 	MOSCAD_error(message ); 				
+   				}   
+
+	
+ } /* end if */
+
+	
+}
+/* end fnDP_LEK ***************************************************************************/
+
 
 
 
