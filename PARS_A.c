@@ -458,6 +458,7 @@ nSiteIdCheck[12] = 320;
 /* 263 Front end C										*/ MOSCAD_add_new_site(5000,RSLINK3);  /* Újfajta retesz kezelés miatt */
 /* 264 Front end E										*/ MOSCAD_add_new_site(7000,RSLINK3);  /* Újfajta retesz kezelés miatt */
 /* 265 Front end G										*/ MOSCAD_add_new_site(9000,RSLINK3);  /* Újfajta retesz kezelés miatt */
+/* 266 Redundancia A						*/ MOSCAD_add_new_site(8990,RSLINK3);  /* Újfajta retesz kezelés miatt */
  	
 
 
