@@ -4007,9 +4007,9 @@ nReteszOffset[0] = 0;             /* DC parancs és DP állapot offsete, ha tartoz
 																													/**/
 /* 1. TMOK: 64-26 RTU: Front end E -> Ostffyasszonyfa biogáz -----------------------*/								/**/
 TMOKAllasjelzesOffsetek[1] = 296; 		/* Az állásjelzés offsete a DP adatbázisban */								/**/
-TMOK_ID[1][0] =1253;						/* TMOK azonosítója a táviratban = DP offset */								/**/															
+TMOK_ID[1][0] =1249;						/* TMOK azonosítója a táviratban = DP offset */								/**/															
 ReteszesRTUIndex[1][0] = 264;			/* E front end */															/**/
-ReteszesTMOK_RTUNum[1] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
+ReteszesTMOK_RTUNum[1] = 0;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
 nReteszPar[1] = 1;                /* 1: tartozik hozzá DC parancs, 0: nem tartozik hozzá DC parancs */
 nReteszOffset[1] = 1;             /* DC parancs és DP állapot offsete, ha tartozik hozzá DC parancs*/
 																													
