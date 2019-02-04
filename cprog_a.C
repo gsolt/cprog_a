@@ -3995,7 +3995,7 @@ int    nReteszOffset[RETESZ_TMOK_NUM];			/* A retesz állapot és parancs offsete,
 ReteszAllapotokKezdoCim = 870;  /* DP4, 120 */																		/**/
 ReteszParancsokKezdoCim = 950;	/* DC4, 200 */																		/**/
 																													/**/
-ReteszesTMOKNum = 13;					/* Ennyi reteszfeltételes TMOK van az adott front-endben*/					/**/	
+ReteszesTMOKNum = 14;					/* Ennyi reteszfeltételes TMOK van az adott front-endben*/					/**/	
 																													/**/
 /* 0. TMOK: 40-93 RTU: Front end E -> Szombathely, Depónia -----------------------*/								/**/
 TMOKAllasjelzesOffsetek[0] = 268; 		/* Az állásjelzés offsete a DP adatbázisban */								/**/
@@ -4103,6 +4103,15 @@ ReteszesRTUIndex[12][0] = 265;			/* G front end */															/**/
 ReteszesTMOK_RTUNum[12] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
 nReteszPar[12] = 1;                /* 1: tartozik hozzá DC parancs, 0: nem tartozik hozzá DC parancs */
 nReteszOffset[12] = 11;             /* DC parancs és DP állapot offsete, ha tartozik hozzá DC parancs*/
+
+/* 13. TMOK: 85-50 RTU: G front end -> Almásfüzitõ 012  PV erõmû -----------------------*/								/**/
+TMOKAllasjelzesOffsetek[13] = 509; 	/* Az állásjelzés offsete a DP adatbázisban */								/**/
+TMOK_ID[13][0] =1280;   						  /* TMOK azonosítója a táviratban = DP offset */								/**/															
+ReteszesRTUIndex[13][0] = 265;			/* G front end */															/**/
+ReteszesTMOK_RTUNum[13] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
+nReteszPar[13] = 1;                /* 1: tartozik hozzá DC parancs, 0: nem tartozik hozzá DC parancs */
+nReteszOffset[13] = 12;             /* DC parancs és DP állapot offsete, ha tartozik hozzá DC parancs*/
+
 																													
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
