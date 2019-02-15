@@ -4073,9 +4073,9 @@ ReteszesTMOK_RTUNum[8] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnáss
 nReteszPar[8] = 1;                /* 1: tartozik hozzá DC parancs, 0: nem tartozik hozzá DC parancs */
 nReteszOffset[8] = 8;             /* DC parancs és DP állapot offsete, ha tartozik hozzá DC parancs*/
 
-/* 9. TMOK: 14-03 RTU: A front end -> Újrónafõ (Császárrét) -----------------------*/								/**/
-TMOKAllasjelzesOffsetek[9] = 1250; 	/* Az állásjelzés offsete a DP adatbázisban */								/**/
-TMOK_ID[9][0] =1250;   						  /* TMOK azonosítója a táviratban = DP offset */								/**/															
+/* 9. TMOK: 14-99 RTU: A front end -> Újrónafõ (Császárrét) -----------------------*/								/**/
+TMOKAllasjelzesOffsetek[9] = 1251; 	/* Az állásjelzés offsete a DP adatbázisban */								/**/
+TMOK_ID[9][0] =1251;   						  /* TMOK azonosítója a táviratban = DP offset */								/**/															
 ReteszesRTUIndex[9][0] = 240;			/* Újrónafõ (Császárrét) */															/**/
 ReteszesTMOK_RTUNum[9] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
 nReteszPar[9] = 0;                /* 1: tartozik hozzá DC parancs, 0: nem tartozik hozzá DC parancs */
