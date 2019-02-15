@@ -2670,8 +2670,10 @@ sT[0].sTI[240].nType = TYP_TAL;
 		sT[0].sTAL[240].nIEC_DP_FSZ1  		= 669;
 		sT[0].sTAL[240].nIEC_NM				= 842;
 		sT[0].sTAL[240].nNMNum		  		= 9;
-		sT[0].sTAL[240].nSP_EXTRA_NUM		= 1;
-		sT[0].sTAL[240].nSP_EXTRA_OFFSET	= 5052;
+
+    sT[0].sTAL[240].nSP_EXTRA_OFFSET		= 5896;
+  	sT[0].sTAL[240].nSP_EXTRA_NUM		= 2;
+		sT[0].sTAL[240].nKommStatusNum		= 2;
 		
 
 /* Vep, TALUS, PM810 -----------------------------------------------------------*/
