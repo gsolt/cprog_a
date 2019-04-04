@@ -3995,7 +3995,7 @@ int    nReteszOffset[RETESZ_TMOK_NUM];			/* A retesz állapot és parancs offsete,
 ReteszAllapotokKezdoCim = 870;  /* DP4, 120 */																		/**/
 ReteszParancsokKezdoCim = 950;	/* DC4, 200 */																		/**/
 																													/**/
-ReteszesTMOKNum = 15;					/* Ennyi reteszfeltételes TMOK van az adott front-endben*/					/**/	
+ReteszesTMOKNum = 17;					/* Ennyi reteszfeltételes TMOK van az adott front-endben*/					/**/	
 																													/**/
 /* 0. TMOK: 40-93 RTU: Front end E -> Szombathely, Depónia -----------------------*/								/**/
 TMOKAllasjelzesOffsetek[0] = 268; 		/* Az állásjelzés offsete a DP adatbázisban */								/**/
@@ -4119,6 +4119,23 @@ ReteszesRTUIndex[14][0] = 265;			/* G front end */															/**/
 ReteszesTMOK_RTUNum[14] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
 nReteszPar[14] = 1;                /* 1: tartozik hozzá DC parancs, 0: nem tartozik hozzá DC parancs */
 nReteszOffset[14] = 13;             /* DC parancs és DP állapot offsete, ha tartozik hozzá DC parancs*/
+
+/* 15. TMOK: 41-50 RTU: G front end -> Gyöngyösfalu PV erõmû -----------------------*/								/**/
+TMOKAllasjelzesOffsetek[15] = 274; 	/* Az állásjelzés offsete a DP adatbázisban */								/**/
+TMOK_ID[15][0] =1288;   						  /* TMOK azonosítója a táviratban = DP offset */								/**/															
+ReteszesRTUIndex[15][0] = 265;			/* G front end */															/**/
+ReteszesTMOK_RTUNum[15] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
+nReteszPar[15] = 1;                /* 1: tartozik hozzá DC parancs, 0: nem tartozik hozzá DC parancs */
+nReteszOffset[15] = 14;             /* DC parancs és DP állapot offsete, ha tartozik hozzá DC parancs*/
+
+/* 16. TMOK: 41-66 RTU: G front end -> Gyöngyösfalu PV erõmû -----------------------*/								/**/
+TMOKAllasjelzesOffsetek[16] = 314; 	/* Az állásjelzés offsete a DP adatbázisban */								/**/
+TMOK_ID[16][0] =1289;   						  /* TMOK azonosítója a táviratban = DP offset */								/**/															
+ReteszesRTUIndex[16][0] = 265;			/* G front end */															/**/
+ReteszesTMOK_RTUNum[16] = 1;				/* Az adott indexû TMOK ennyi kábelköri állomnással kommunikál */			/**/
+nReteszPar[16] = 1;                /* 1: tartozik hozzá DC parancs, 0: nem tartozik hozzá DC parancs */
+nReteszOffset[16] = 15;             /* DC parancs és DP állapot offsete, ha tartozik hozzá DC parancs*/
+
 																													
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
