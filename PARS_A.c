@@ -285,7 +285,7 @@ ST[0].nSiteList[133]		=183; 	ST[0].nLinkList[133]		=RADIO1_1; 		/*35-24, Székesf
 ST[0].nSiteList[134]		=184; 	ST[0].nLinkList[134]		=RADIO2_6; 		/*91-13, Zalaegerszeg			ZALA*/
 ST[0].nSiteList[135]		=185; 	ST[0].nLinkList[135]		=RADIO2_7; 		/*91-08, Zalaegerszeg			ZALA*/
 ST[0].nSiteList[136]		=186; 	ST[0].nLinkList[136]		=RADIO2_7; 		/*91-58, Zalaegerszeg			ZALA*/
-ST[0].nSiteList[137]		=187; 	ST[0].nLinkList[137]		=RADIO2_7; 		/*91-64, Zalaegerszeg			ZALA*/
+ST[0].nSiteList[137]		=187; 	ST[0].nLinkList[137]		=RADIO2_6; 		/*91-64, Zalaegerszeg			ZALA*/
 ST[0].nSiteList[138]		=188; 	ST[0].nLinkList[138]		=RADIO2_6; 		/*91-70, Zalaegerszeg			ZALA*/
 ST[0].nSiteList[139]		=189; 	ST[0].nLinkList[139]		=RADIO2_6; 		/*91-90, Zalaegerszeg			ZALA*/
 ST[0].nSiteList[140]		=190; 	ST[0].nLinkList[140]		=RADIO2_6; 		/*91-92, Zalaegerszeg			ZALA*/
