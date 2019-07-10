@@ -219,7 +219,7 @@ ST[0].nSiteList[67]		=88; 	ST[0].nLinkList[67]		=RADIO7_1; 		/*14-44,	 					MOS*
 ST[0].nSiteList[68]		=3045; 	ST[0].nLinkList[68]		=RADIO4_4; 		/*64-26, Cellhö, 				IK*/
 ST[0].nSiteList[69]		=36; 	ST[0].nLinkList[69]		=RADIO6_1; 		/*Bükfürdö Radison Hotel 1. rész, 	SZOM*/
 ST[0].nSiteList[70]		=36; 	ST[0].nLinkList[70]		=RADIO6_1; 		/*Bükfürdö Radison Hotel 2. rész, 	SZOM*/
-ST[0].nSiteList[71]		=3055; 	ST[0].nLinkList[71]		=RADIO6_1; 		/*41-78, Köszeg nyugat 1, 			SZOM*/
+ST[0].nSiteList[71]		=3055; 	ST[0].nLinkList[71]		=RADIO6_3; 		/*41-78, Köszeg nyugat 1, 			SZOM*/
 ST[0].nSiteList[72]		=3057; 	ST[0].nLinkList[72]		=RADIO6_6; 		/*41-80, Köszeg nyugat 2, 			SZOM*/
 ST[0].nSiteList[73]		=3056; 	ST[0].nLinkList[73]		=RADIO6_1; 		/*41-66, Köszegfalva-Lukácsháza,	SZOM*/
 ST[0].nSiteList[74]		=89; 	ST[0].nLinkList[74]		=RADIO6_6; 		/*41-54, Lukácsháza-Köszegdoroszló,	SZOM*/
