@@ -195,7 +195,7 @@ ST[0].nSiteList[43]		=54; 	ST[0].nLinkList[43]		=RADIO6_6; 		/*40-93,			 			SZOM
 ST[0].nSiteList[44]		=53; 	ST[0].nLinkList[44]		=RADIO6_1; 		/*40-80, 						SZOM*/
 ST[0].nSiteList[45]		=50; 	ST[0].nLinkList[45]		=RADIO6_1; 		/*40-37,			 			SZOM*/
 ST[0].nSiteList[46]		=49; 	ST[0].nLinkList[46]		=RADIO7_1; 		/*12-54,		 				MOS*/
-ST[0].nSiteList[47]		=313; 	ST[0].nLinkList[47]		=RADIO6_1; 		/*Koszeg, gazmotor				SZOM*/
+ST[0].nSiteList[47]		=313; 	ST[0].nLinkList[47]		=RADIO6_3; 		/*Koszeg, gazmotor				SZOM*/
 ST[0].nSiteList[48]		=43; 	ST[0].nLinkList[48]		=RADIO7_1; 		/*12-89, gyártelep, 			MOS*/
 ST[0].nSiteList[49]		=3067; 	ST[0].nLinkList[49]		=RADIO2_4; 		/*42-44, 						ZALA*/
 ST[0].nSiteList[50]		=47; 	ST[0].nLinkList[50]		=RADIO7_1; 		/*15-03, Dunakiliti, 			MOS*/
